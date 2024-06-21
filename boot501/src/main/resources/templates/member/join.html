@@ -17,7 +17,7 @@
                     JOIN
                 </div>
                 <div class="card-body">
-                    <form id="registerForm" action="/member/join" method="post">
+                    <form id="registrationForm" action="/member/join" method="post">
                         <div class="input-group mb-3">
                             <span class="input-group-text">MID</span>
                             <input type="text" name="mid" class="form-control">
@@ -36,8 +36,8 @@
 <!--                        파일 첨부 하는 화면 넣기-->
 <!--                        글작성시, 레스트로 업로드 하는 방식 그대로 재사용해보기-->
                         <div class="mb-3 input-group">
-                            <span class="input-group-text">첨부파일  </span>
-                            <input type="file" id="profileImage" name="profileImage" accept="image/*" required>
+<!--                            <span class="input-group-text">첨부파일  </span>-->
+                            <input class="form-control" type="file" id="profileImage" name="profileImage" accept="image/*">
                         </div>
                         <!--    첨부 파일 이미지 미리 보기 화면, -->
                         <div class="row mt-3">
@@ -55,8 +55,8 @@
 
                         <div class="my-4">
                             <div class="float-end">
-                                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
-                                <button type="reset" class="btn btn-secondary">Reset</button>
+                                <button type="submit" class="btn btn-primary" onclick="submitForm()">회원가입</button>
+                                <button type="reset" class="btn btn-secondary">초기화</button>
                             </div>
                         </div>
                     </form>
@@ -204,6 +204,26 @@
         document.querySelector("form").submit();
 
     },false)
+
+    //등록하기, 2번째 버전
+    function submitForm() {
+        const form = document.getElementById('registrationForm');
+        const formData = new FormData(form);
+
+        axios.post('/member/join', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+            .then(response => {
+                alert('회원가입이 완료되었습니다!');
+                console.log(response.data);
+            })
+            .catch(error => {
+                alert('회원가입 중 오류가 발생했습니다.');
+                console.error(error);
+            });
+    }
 
 
 

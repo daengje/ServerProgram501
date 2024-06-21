@@ -66,7 +66,7 @@ public class CustomSecurityConfig {
                 // 정적 자원 모두 허용.
                 .requestMatchers("/css/**", "/js/**","/images/**").permitAll()
                 // 리스트는 기본으로 다 들어갈수 있게., 모두 허용
-                .requestMatchers("/", "/board/list","/member/join","/upload","/view/**", "/login", "/joinUser","/joinForm","/findAll","/images/**").permitAll()
+                .requestMatchers("/", "/board/list","/member/join", "/login", "/joinUser","/joinForm","/findAll","/images/**").permitAll()
                 // 로그인 후 확인 하기. 권한 예제) hasRole("USER"),hasRole("ADMIN")
                 .requestMatchers("/board/register","/board/read","/board/update" ).authenticated()
                 // 권한  관리자만, 예제로 , 수정폼은 권한이 관리자여야 함.
