@@ -36,3 +36,20 @@ http://localhost:8080/login/oauth2/code/kakao
 이메일, 닉네임, 프로필 이미지
 동의 목적 , 교육 테스트
 
+8 사이드 메뉴 앱키
+- REST API 키 값 복사하기.
+43403e***************5b5fed62
+--------------------------------------------------
+스프링 도구 설치 및 설정.
+9 build.gradle
+oauth2-client
+
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-oauth2-client
+implementation group: 'org.springframework.boot', name: 'spring-boot-starter-oauth2-client', version: '3.3.0'
+
+10
+application.properties 에서 카카오 로그인 API 관련 설정 코드
+여기서, 다 샘플코드 이고,
+1) 시크릿 코드
+2) REST API 키
+2가지만 변경
