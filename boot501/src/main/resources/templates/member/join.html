@@ -37,16 +37,17 @@
 <!--                        글작성시, 레스트로 업로드 하는 방식 그대로 재사용해보기-->
                         <div class="mb-3 input-group">
                             <span class="input-group-text">첨부파일  </span>
-                            <div class="uploadHidden">
-                                <button type="button" class="btn btn-primary uploadFileBtn">파일추가</button>
-                            </div>
+                            <input type="file" id="profileImage" name="profileImage" accept="image/*" required>
                         </div>
                         <!--    첨부 파일 이미지 미리 보기 화면, -->
                         <div class="row mt-3">
-                            <div class="col">
-                                <div class="d-flex uploadResult" style="flex-wrap: wrap">
+<!--                            <div class="col">-->
+<!--                                <div class="d-flex uploadResult" style="flex-wrap: wrap">-->
 
-                                </div>
+<!--                                </div>-->
+<!--                            </div>-->
+                            <div id="preview-container">
+                                <img id="imagePreview" src="" alt="Image Preview" style="display: none;">
                             </div>
                         </div>
 
@@ -96,6 +97,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!--    우리가 정의한 /js/reply.js 불러오기-->
     <script src="/js/upload.js"></script>
+    <script src="/js/scripts.js"></script>
 
 </div>
 
@@ -202,6 +204,8 @@
         document.querySelector("form").submit();
 
     },false)
+
+
 
 
 </script>

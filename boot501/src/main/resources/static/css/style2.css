@@ -1,3 +1,18 @@
+
+/*회원 가입시, 이미지 미리보기 화면*/
+#preview-container {
+    margin-top: 20px;
+}
+
+#imagePreview {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    object-fit: cover; /* 이미지가 잘림 없이 원형에 맞게 */
+}
+
+
 /*헤더 부분 오른쪽으로 정렬하기*/
 .parent-header-container {
     position: relative; /* 부모 컨테이너를 상대 위치로 설정 */

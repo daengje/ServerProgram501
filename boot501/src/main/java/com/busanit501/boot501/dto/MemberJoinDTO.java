@@ -2,6 +2,7 @@ package com.busanit501.boot501.dto;
 
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -17,5 +18,6 @@ public class MemberJoinDTO {
     private String fileName;
     //첨부 파일 이름들
     private List<String> fileNames;
+    private MultipartFile profileImage;
 
 }
