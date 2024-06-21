@@ -58,7 +58,8 @@ public class MemberController {
         String resultProfileImage = "";
        if(profileImage != null && !profileImage.isEmpty()) {
            UploadResultDTO uploadResultDTO = memberService.uploadProfileImage(profileImage);
-            resultProfileImage = uploadResultDTO.getLink();
+           // resultProfileImage -> s_uuid_파일명
+           resultProfileImage = uploadResultDTO.getLink();
            log.info("memberJoinDTO 이미지가 있는 경우 : " + resultProfileImage);
 
 //        memberJoinDTO.addProfileImage(resultProfileImage);
