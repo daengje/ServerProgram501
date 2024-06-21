@@ -211,6 +211,8 @@
         const formData = new FormData(form);
 
         axios.post('/member/join', formData, {
+            //폼 방식에서, 이미지와 일반 문자열을 서버에 전달시
+            // 전달 방식을 multipart/form-data 꼭~~~ 주의사항.
             headers: {
                 'Content-Type': 'multipart/form-data'
             }

@@ -48,7 +48,7 @@ public class MemberController {
 
     // 회원 가입 로직 처리
     @PostMapping("/join")
-    public String joinPost(MemberJoinDTO memberJoinDTO,@RequestParam("profileImage") MultipartFile profileImage,
+    public String joinPost(MemberJoinDTO memberJoinDTO, @RequestParam(value = "profileImage", required = false) MultipartFile profileImage,
                            RedirectAttributes redirectAttributes) {
         log.info("joinPost====================");
         log.info("memberJoinDTO = " + memberJoinDTO);
@@ -56,16 +56,17 @@ public class MemberController {
 
         // 프로필 이미지가 있을 경우, 이미지를 먼저 업로드 함.
         String resultProfileImage = "";
-       if(profileImage != null) {
+       if(profileImage != null && !profileImage.isEmpty()) {
            UploadResultDTO uploadResultDTO = memberService.uploadProfileImage(profileImage);
             resultProfileImage = uploadResultDTO.getLink();
-       }
-        log.info("memberJoinDTO 이미지가 있는 경우 : " + resultProfileImage);
+           log.info("memberJoinDTO 이미지가 있는 경우 : " + resultProfileImage);
 
 //        memberJoinDTO.addProfileImage(resultProfileImage);
-        String[] arr = resultProfileImage.split("_");
-        memberJoinDTO.setUuid(arr[1]);
-        memberJoinDTO.setFileName(arr[2]);
+           String[] arr = resultProfileImage.split("_");
+           memberJoinDTO.setUuid(arr[1]);
+           memberJoinDTO.setFileName(arr[2]);
+       }
+
         log.info("memberJoinDTO = 3 프로필 이미지 있는 경우  " + memberJoinDTO);
         // 회원 가입 로직 처리 없음.
         try {
