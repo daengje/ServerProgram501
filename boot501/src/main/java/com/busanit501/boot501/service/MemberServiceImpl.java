@@ -31,11 +31,14 @@ public class MemberServiceImpl implements MemberService {
         }
 
         // 중복이 아니니 회원 가입 처리하기.
-         Member member = modelMapper.map(memberJoinDTO, Member.class);
+//         Member member = modelMapper.map(memberJoinDTO, Member.class);
+        Member member = dtoToEntity(memberJoinDTO);
         //패스워드는 현재 평문 -> 암호로 변경.
         member.changePassword(passwordEncoder.encode(member.getMpw()));
         // 역할 추가. 기본 USER
         member.addRole(MemberRole.USER);
+
+
 
         // 데이터 가 잘 알맞게 변경이 됐는지 여부,
         log.info("joinMember: " + member);

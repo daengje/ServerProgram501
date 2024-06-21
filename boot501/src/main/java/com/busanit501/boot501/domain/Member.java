@@ -57,4 +57,9 @@ public class Member extends  BaseEntity {
         this.social = social;
     }
 
+    public void changeUuidFileName(String uuid, String fileName) {
+        this.uuid = uuid;
+        this.fileName = fileName;
+    }
+
 }
