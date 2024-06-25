@@ -1,0 +1,9 @@
+show tables;
+select * from persistent_logins;
+select * from member where mid = 'test3';
+select * from member;
+select * from member_role_set;
+
+select * from member where mid = 'lsy3709@kakao.com';
+delete from member where mid = 'lsy3709@kakao.com';
+delete from member_role_set where member_mid = 'lsy3709@kakao.com';

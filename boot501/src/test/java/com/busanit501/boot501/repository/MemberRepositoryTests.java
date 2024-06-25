@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.test.annotation.Commit;
 
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -53,6 +54,33 @@ public class MemberRepositoryTests {
         member.getRoleSet().forEach(memberRole -> {
             log.info("MemberRepositoryTests testRead, memberRole:  "+memberRole);
         });
+    }
+
+    // 소셜 로그인 유저 , 기본 패스워드 1111 고정을 , 변경하는 테스트.
+    @Commit
+    @Test
+    public void testUpdate() {
+        String mid = "lsy3709@kakao.com";
+        String mpw = passwordEncoder.encode("12345678");
+        memberRepository.updatePassword(mpw,mid);
+        boolean isPasswordMatch = passwordEncoder.matches("12345678", mpw);
+        log.info("MemberRepositoryTests testPasswordEqual, isPasswordMatch:  "+isPasswordMatch);
+    }
+
+    // 소셜 로그인시, 최초 패스워드 1111
+    // 변경된 패스워드 확인 하는 테스트.
+    @Test
+    public void testPasswordEqual() {
+        // 이메일로 유저 불러오기.
+        Optional<Member> result = memberRepository.findByEmail("lsy3709@kakao.com");
+        Member member = result.orElseThrow();
+        // password1 = 패스워드 1111 이 인코딩 된 값
+        String password1 = member.getMpw();
+        boolean isPasswordMatch = passwordEncoder.matches("1111", password1);
+        log.info("MemberRepositoryTests testPasswordEqual, isPasswordMatch:  "+isPasswordMatch);
+
+
+
     }
 
 }
